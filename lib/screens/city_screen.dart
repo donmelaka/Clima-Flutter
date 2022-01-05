@@ -7,8 +7,12 @@ class CityScreen extends StatefulWidget {
 }
 
 class _CityScreenState extends State<CityScreen> {
+  TextEditingController cityController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -33,10 +37,19 @@ class _CityScreenState extends State<CityScreen> {
               ),
               Container(
                 padding: EdgeInsets.all(20.0),
-                child: null,
+                child: TextField(
+                  controller: cityController,
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
+                  decoration: kTextInputDecoration,
+                ),
               ),
               FlatButton(
-                onPressed: () {},
+                onPressed: () {
+                  print(cityController.text);
+                  Navigator.pop(context, cityController.text);
+                },
                 child: Text(
                   'Get Weather',
                   style: kButtonTextStyle,
